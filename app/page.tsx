@@ -1,113 +1,68 @@
-import Image from "next/image";
+import React from 'react'
+import Header from './components/Header'
+import Card from './components/Card'
+import Footer from './components/Footer'
+import Download from './components/Download'
+import Image from 'next/image'
 
-export default function Home() {
+const page = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <Header />
+      <div className="hero min-h-screen" style={{backgroundImage: 'url(/images/end.png)'}}>
+        <div className="hero-overlay bg-opacity-60"></div>
+          <div className="hero-content text-center text-neutral-content">
+            <div className="max-w-md">
+              <h1 className="my-title mb-5 text-6xl font-bold">校园忆 · 心之引</h1>
+              <h2 className="mb-5 text-2xl font-bold">Campus Memoirs<br></br>Unearthing the Inner Compass</h2>
+              <p className="mb-5"></p>
+              <Download href='https://files.catbox.moe/5pf46r.zip'/>
+            </div>
+          </div>
+      </div>
+      <div id='target' className='pl-32 py-5 flex'>
+        <div className="h-full mt-8 card w-96 bg-base-100 shadow-xl">
+          <figure><Image src="/images/lover.png" alt="img" width={500} height={500}/></figure>
+          <div className=" bg-slate-700 card-body">
+            <h2 className=" text-slate-100 card-title">校园忆 · 心之引</h2>
+            <p className=' text-slate-300'>这是一个有关校园回忆的游戏。</p>
+            <p className=' text-slate-300'>男主角是一个被 ddl 和考试所包围的情绪低落烦躁的华科大三男生，他在疯狂翻看计算机组成原理书的时候不知不觉进入了里世界：</p>
+            <p className=' text-slate-300'>他先后穿越到了里宿舍与高中教室，在志向线与爱情线的交替贯穿下，不断探求，最终找寻到了初心、也从曾经的经历中获得了释怀……</p>
+            <p className=' text-slate-300'>在《校园忆：心之引》中，你将被引领进入一幅诗意绽放的校园画卷，感受成长的喜悦和迷茫的回响。揭示男主角的命运，同时也会探寻自己内心的指南针，指引你通向心灵的深处，寻找生命的奇迹。</p>
+          </div>
+        </div>
+        <div>
+          <Card
+            imgSrc='/images/dormitory.png'
+            title='游戏介绍'
+            desc='《校园忆：心之引》是一幅诗意绘就的解谜冒险之旅。在校园宿舍的迷离光影中，描绘了成长、热爱和爱情的壮美篇章。'
+            href='/introduction'
+          />
+          <Card
+            imgSrc='/images/handwrite-letter.png'
+            title='图片展示'
+            desc='展示游戏内容截图，包括场景、物品等。'
+            href='/gallery'
+          />
+        </div>
+        <div>
+          <Card
+            imgSrc='/images/notebook.png'
+            title='使用说明'
+            desc='踏上《校园忆：心之引》这场诗意之旅，解开心灵的迷宫，去寻找你真正的归属和力量吧。'
+            href='/tutorial'
+          />
+          <Card
+            imgSrc='/images/about.png'
+            title='关于我们'
+            desc='小组成员、联系方式'
+            href='/about'
+          />
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+      <Footer />
+    </>
+  )
 }
+
+export default page
