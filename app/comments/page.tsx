@@ -48,6 +48,7 @@ const Page = async () => {
   //const comments = db.data.comments;
   const comments = getComments();
   const add = async (content: string) => {
+    'use server';
     const newComment = {
       username: 'User' + Math.floor(Math.random() * 1000),
       content: content,
