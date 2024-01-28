@@ -1,34 +1,61 @@
 import React from 'react'
 import TextArea from '../components/TextArea'
 import { revalidatePath } from 'next/cache'
-import { Low } from 'lowdb'
-import { JSONFile } from 'lowdb/node'
+// import { Low } from 'lowdb'
+// import { JSONFile } from 'lowdb/node'
 
-interface Database {
-  comments: Array<{
-    username: string;
-    content: string;
-    time: string;
-  }>;
+// interface Database {
+//   comments: Array<{
+//     username: string;
+//     content: string;
+//     time: string;
+//   }>;
+// }
+
+// const db: Low<Database> = new Low(new JSONFile('db.json'), { comments: [] });
+// await db.read();
+
+// const add = async (content: string) => {
+//   'use server'
+//   const newComment = {
+//     username: 'User' + Math.floor(Math.random() * 1000),
+//     content: content,
+//     time: new Date().toLocaleString()
+//   }
+//   db.data.comments.push(newComment);
+//   await db.write()
+//   revalidatePath('/comments')
+// }
+
+interface Comment {
+  username: string;
+  content: string;
+  time: string;
 }
 
-const db: Low<Database> = new Low(new JSONFile('db.json'), { comments: [] });
-await db.read();
+const getComments = (): Comment[] => {
+  const commentsString = process.env.COMMENTS || '[]';
+  return JSON.parse(commentsString);
+};
 
-const add = async (content: string) => {
-  'use server'
-  const newComment = {
-    username: 'User' + Math.floor(Math.random() * 1000),
-    content: content,
-    time: new Date().toLocaleString()
-  }
-  db.data.comments.push(newComment);
-  await db.write()
-  revalidatePath('/comments')
-}
+const saveComment = (newComment: Comment) => {
+  const comments = getComments();
+  comments.push(newComment);
+  process.env.COMMENTS = JSON.stringify(comments);
+};
 
 const Page = async () => {
-  const comments = db.data.comments;
+  //const comments = db.data.comments;
+  const comments = getComments();
+  const add = async (content: string) => {
+    const newComment = {
+      username: 'User' + Math.floor(Math.random() * 1000),
+      content: content,
+      time: new Date().toLocaleString(),
+    };
+    saveComment(newComment);
+    revalidatePath('/comments');
+  };
   return (
     <>
       <div className="flex justify-center items-center min-h-screen py-6 bg-zinc-200">
