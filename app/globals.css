@@ -24,7 +24,7 @@ body {
 
 @font-face {
   font-family: 'TitleFont';
-  src: url('/ZhiMangXing-Regular.ttf') format('truetype');
+  src: url('/fonteditor.ttf') format('truetype');
 }
 
 .my-title {

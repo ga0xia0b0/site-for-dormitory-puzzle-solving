@@ -1,12 +1,9 @@
 import React from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 import Image from 'next/image'
 
 const page = () => {
   return (
     <>
-      <Header />
       <div className="flex justify-center items-center min-h-screen py-6 bg-zinc-200">
         <div className='bg-zinc-100 py-10 px-60 shadow-lg'>
           <article className="prose lg:prose-lg">
@@ -86,7 +83,6 @@ const page = () => {
           </article>
         </div>
       </div>
-      <Footer />
     </>
   )
 }
